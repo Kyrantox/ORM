@@ -60,7 +60,7 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         //
-        $employee->save($request->toArray());
+        $employee->update($request->toArray());
         return $employee;
     }
 

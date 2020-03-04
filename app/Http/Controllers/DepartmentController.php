@@ -54,7 +54,7 @@ class DepartmentController extends Controller
     public function update(Request $request, Department $department)
     {
         //
-        $department->save($request->toArray());
+        $department->update($request->toArray());
         return $department;
     }
 

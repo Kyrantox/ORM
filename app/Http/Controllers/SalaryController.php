@@ -54,7 +54,7 @@ class SalaryController extends Controller
     public function update(Request $request, Salary $salary)
     {
         //
-        $salary->save($request->toArray());
+        $salary->update($request->toArray());
         return $salary;
     }
 

@@ -54,7 +54,7 @@ class TitleController extends Controller
     public function update(Request $request, Title $title)
     {
         //
-        $title->save($request->toArray());
+        $title->update($request->toArray());
         return $title;
     }
 

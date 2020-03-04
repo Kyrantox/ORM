@@ -16,6 +16,10 @@ class Department extends Model
      * Retourne le ou les employés d'un département en question
      */
 
+    protected $fillable = [
+        'dept_no','dept_name'
+    ];
+
     public function employees()
     {
         return $this->belongsToMany('App\Employee','dept_emp','dept_no','emp_no')->withPivot('from_date', 'to_date');

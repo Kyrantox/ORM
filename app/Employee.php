@@ -10,6 +10,10 @@ class Employee extends Model
     public $incrementing = false;
     public $timestamps = false;
 
+    protected $fillable = [
+        'first_name','last_name','birth_date','hire_date','gender','emp_no'
+    ];
+
     /**
      * Retourne le ou les salaires qu'a / qu'a eu l'employé
      */

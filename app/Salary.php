@@ -13,6 +13,10 @@ class Salary extends Model
      * Retourne le ou les employés pour un salaire donné
      */
 
+    protected $fillable = [
+        'emp_no','salary','from_date','to_date'
+    ];
+
     public function employee()
     {
         return $this->belongsTo('App\Employee','emp_no');

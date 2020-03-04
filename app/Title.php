@@ -13,6 +13,10 @@ class Title extends Model
      * Retourne l'employés pour un titre donné et à une date donné
      */
 
+    protected $fillable = [
+        'emp_no','title','from_date','to_date'
+    ];
+
     public function employee()
     {
         return $this->belongsTo('App\Employee','emp_no','emp_no');

@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('employees','EmployeeController');
 Route::apiResource('departments','DepartmentController');
+Route::apiResource('Salary','SalaryController');
+Route::apiResource('Title','TitleController');

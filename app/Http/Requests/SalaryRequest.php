@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EmployeeRequest extends FormRequest
+class SalaryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,9 @@ class EmployeeRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'birth_date' => 'date',
-            'first_name' => 'string|max:255',
-            'last_name' => 'string|max:255',
-            'gender' => 'string|max:1|in:M,F',
-            'hire_date' => 'date|after:birth_date'
+            'salary' => 'integer',
+            'from_date' => 'date|before:to_date',
+            'to_date' => 'date|max:255'
 
         ];
 
@@ -36,7 +34,7 @@ class EmployeeRequest extends FormRequest
             foreach($rules as $rule =>$val){
                 $rules[$rule] = $val .'|required';
             }
-            $rules["emp_no"] = 'integer|required|unique:employees,emp_no';
+            $rules["emp_no"] = 'integer|required';
         }
 
         return $rules;

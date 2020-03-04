@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
+use App\Title;
 //use Illuminate\Http\Request;
-use App\Http\Requests\EmployeeRequest as Request;
+use App\Http\Requests\TitleRequest as Request;
 
-class EmployeeController extends Controller
+class TitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-//        return Employee::chunk(10, function($employees)
-//        {
-//            return $employees;
-//        });
-        return Employee::paginate(5)->ToJson();
+        return Title::paginate(5)->ToJson();
     }
 
     /**
@@ -31,50 +27,48 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         //
-
-        Employee::create($request->toArray());
-        $e = Employee::find($request->emp_no);
+        Title::create($request->toArray());
+        $e = Title::where('dept_no', $request->dept_no)->where('title', $request->title)->where('from_date', $request->from_date)->first();
         return $e->ToJson();
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Employee  $employee
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show(Title $title)
     {
         //
-         return $employee;
+        return $title;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Employee  $employee
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, Title $title)
     {
         //
-        $employee->save($request->toArray());
-        return $employee;
+        $title->save($request->toArray());
+        return $title;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Employee  $employee
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(Title $title)
     {
         //
-        $e = $employee;
-        $employee->delete();
+        $e = $title;
+        $title->delete();
         return $e->toJson();
     }
 }

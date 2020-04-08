@@ -58,17 +58,4 @@ class SalaryController extends Controller
         return $salary;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Department  $department
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Salary $salary)
-    {
-        //
-        $e = $salary;
-        $salary->delete();
-        return $e->toJson();
-    }
 }
